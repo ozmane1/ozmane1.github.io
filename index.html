@@ -1,459 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Otmane-Zagnoune Portfolio</title>
-    <!-- Favicon-->
-    <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
-    <!-- Custom Google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="assets/css/styles.css" rel="stylesheet" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Otmane Zagnoune · AI/ML Engineer</title>
+<meta name="description" content="Otmane Zagnoune, AI/ML Engineer & MLOps. I build agentic AI systems: LLM agents that plan, use tools and work together, with vision and speech models, in production.">
+<meta property="og:title" content="Otmane Zagnoune · AI/ML Engineer">
+<meta property="og:description" content="I build agentic AI systems: LLM agents that plan, use tools and work together, with vision and speech models, in production.">
+<meta property="og:image" content="https://ozmane1.github.io/assets/img/otmane.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0c0e; --bg-2:#121417; --card:#15181c; --line:#24282e;
+  --text:#ecedef; --muted:#9aa1ab; --faint:#6b727c;
+  --accent:#5eead4; --accent-ink:#06201c;
+  --radius:16px; --max:1080px;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f6f6f4; --bg-2:#efefec; --card:#ffffff; --line:#e2e2de;
+    --text:#14161a; --muted:#565c66; --faint:#868c95;
+    --accent:#0f766e; --accent-ink:#ffffff;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:700;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:14px;color:var(--muted)}
+nav a:hover{color:var(--text)}
+
+/* hero */
+.hero{padding:88px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px solid var(--line);background:var(--bg-2);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+h1{font-size:clamp(40px,6vw,64px);line-height:1.04;letter-spacing:-.035em;margin:22px 0 18px;font-weight:700}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:36ch}
+.lead strong{color:var(--text);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--card);transition:transform .15s,border-color .15s}
+.btn:hover{transform:translateY(-1px);border-color:var(--faint)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.btn svg{width:18px;height:18px}
+.photo{position:relative;justify-self:end;width:100%;max-width:340px}
+.photo img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:22px;border:1px solid var(--line);filter:grayscale(1) contrast(1.03)}
+.photo::after{content:"";position:absolute;inset:auto -14px -14px auto;width:62%;height:62%;border:1px solid var(--accent);border-radius:22px;z-index:-1;opacity:.55}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h2{font-size:clamp(28px,3.4vw,38px);letter-spacing:-.025em;line-height:1.15;margin-bottom:14px}
+.intro{color:var(--muted);max-width:62ch;margin-bottom:36px;font-size:17px}
+
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.card .ico{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);margin-bottom:16px}
+.card .ico svg{width:20px;height:20px}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14.5px;line-height:1.6}
+
+/* experience */
+.timeline{display:grid;gap:16px}
+.job{display:grid;grid-template-columns:180px 1fr;gap:28px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px}
+.when{color:var(--faint);font-size:13px;padding-top:3px}
+.job h3{font-size:18px}
+.org{color:var(--accent);font-weight:500;font-size:15px;margin:2px 0 12px}
+.job ul{list-style:none;display:grid;gap:7px}
+.job li{color:var(--muted);font-size:15px;padding-left:18px;position:relative}
+.job li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:2px;background:var(--faint)}
+.job p{color:var(--muted);font-size:15px}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-size:14px;padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card)}
+
+/* open source */
+.oss{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.oss a{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;transition:border-color .15s,transform .15s}
+.oss a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.oss b{display:block;font-size:15px;margin-bottom:4px}
+.oss span{font-size:13px;color:var(--muted)}
+
+/* education */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.edu{display:grid;gap:14px}
+.edu .item b{display:block}
+.edu .item span{color:var(--muted);font-size:14.5px}
+.certs{list-style:none;display:grid;gap:10px}
+.certs li{display:flex;justify-content:space-between;gap:16px;font-size:15px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.certs li:last-child{border-bottom:0;padding-bottom:0}
+.certs time{color:var(--faint);font-size:13px;white-space:nowrap}
+
+footer{border-top:1px solid var(--line);padding:56px 0 64px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer h2{margin:0}
+footer small{display:block;color:var(--faint);margin-top:28px;width:100%}
+
+@media (max-width:900px){
+  .grid4{grid-template-columns:repeat(2,1fr)}
+  .oss{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  nav ul{display:none}
+  .hero{padding:48px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .photo{order:-1;justify-self:start;max-width:220px}
+  .grid4,.two{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:6px;padding:22px}
+  section{padding:56px 0}
+  .wrap{padding:0 16px}
+}
+</style>
 </head>
+<body>
 
-<body class="d-flex flex-column h-100">
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#">Otmane<span>.</span></a>
+    <nav><ul>
+      <li><a href="#work">Agentic AI</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#oss">Open source</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
 
-
-    <main class="flex-shrink-0">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-            <div class="container px-5">
-                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Otmane Zagnoune</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                    
-                        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
-                        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="certificates.html">Certificates</a></li>
-                        <li class="nav-item"><a class="nav-link" href="error404.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-             <!-- notifications part 
-             syles.css stylesheet
-            -->
-    <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts" id="toastContainer">
-        <div class="toast-container p-3 top-50 start-50 translate-middle" id="toastPlacement" data-original-class="toast-container p-3">
-         <!-- Then put toasts within -->
-  
-        </div>
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>AI/ML Engineer &amp; MLOps @ Realift</span>
+      <h1>Otmane Zagnoune</h1>
+      <p class="lead">I build <strong>agentic AI systems</strong>: LLM agents that plan, use tools and work together, with vision and speech models, in production.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/ozmane1" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/otmane-zagnoune-734579246/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+          LinkedIn</a>
+        <a class="btn" href="mailto:zagnoune.otmane@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Email</a>
       </div>
+    </div>
+    <div class="photo"><img src="assets/img/otmane.jpg" alt="Portrait of Otmane Zagnoune" width="720" height="960"></div>
+  </div>
+</div>
 
+<section id="work">
+  <div class="wrap">
+    <p class="label mono">What I work on</p>
+    <h2>Agentic AI systems</h2>
+    <p class="intro">Multi-agent systems where LLM agents plan, call tools and hand work to each other, from research to a finished, delivered result, combined with vision and speech models.</p>
+    <div class="grid4">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M8 4h8M9 14h.01M15 14h.01"/></svg></div>
+        <h3>Agents</h3>
+        <p>Multi-agent orchestration, tool use, sandboxed execution, human-in-the-loop approvals, model fallback chains.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Vision</h3>
+        <p>Image &amp; video generation pipelines, super-resolution, segmentation, background removal.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg></div>
+        <h3>Speech</h3>
+        <p>Text-to-speech, speech recognition, lip-sync.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></div>
+        <h3>MLOps</h3>
+        <p>Automation, scheduling, cost control, API integrations, Dockerized deployments.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Header-->
-        <header class="py-5">
-            <div class="container px-5 pb-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-xxl-5">
-                        <!-- Header text content-->
-                        <div class="text-center text-xxl-start">
-                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
-                                <div class="text-uppercase">Data Science &middot; Deep Learning &middot;
-                                    Statistical Analysis</div>
-                            </div>
-                            <div class="fs-3 fw-light text-muted">Otmane Zagnoune</div>
-                            <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Empowering Tomorrow through Strategic Data Utilization 💻</span></h1>
-                            
-                        </div>
-                    </div>
-                    <div class="col-xxl-7">
-                        <!-- Header profile picture-->
-                        <div class="d-flex justify-content-center mt-5 mt-xxl-0">
-                            <div class="profile bg-gradient-primary-to-secondary">
-                                <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
-                                <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                <img class="profile-img" src="assets/img/personal_pics/prefessional pic/pic2.jpeg"
-                                    alt="Otmane personal picture" />
-                                <div class="dots-1">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4"
-                                        xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path
-                                                d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                                <div class="dots-2">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4"
-                                        xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path
-                                                d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                                <div class="dots-3">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4"
-                                        xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path
-                                                d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                                <div class="dots-4">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                        viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4"
-                                        xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path
-                                                d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z">
-                                            </path>
-                                            <path
-                                                d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z">
-                                            </path>
-                                            <path
-                                                d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- About Section-->
-        <section class="bg-light py-5">
-            <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xxl-8">
-                        <div class="text-center my-5">
-                            <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                            <p class="lead fw-light mb-4">Otmane Zagnoune: Your Guide in the World of Data Science.</p>
-                            <p class="text-muted">
-                                Welcome to the digital home of Otmane Zagnoune Data Scientist and Machine Learning Engineer 
-                                with 2 years of experience in predictive modeling, data analysis, and deep learning, 
-                                with a track record of improving diagnostic accuracy and impacting patient care. 
-                                Proficient in developing and deploying machine learning models, with expertise in MLOps for 
-                                seamless model integration, monitoring, and scaling. Adept at extracting valuable insights 
-                                from complex datasets and communicating findings effectively. Passionate about applying 
-                                innovative machine learning techniques across various industries to drive business success 
-                                and solve complex challenges. 
-                                My journey in the realm of data has led me to specialize in areas such as
-                                Data Science, Machine Learning, and statistical modeling.
-                                <br><br>
-                                My experiences have
-                                shaped my understanding of the data landscape. I've also had the opportunity to work on
-                                exciting projects, from analyzing real data to fine-tuning, deploying, and
-                                monitoring AI systems, each one a testament to my love for technology and data.
-
-                                <br><br>
-                                But my journey doesn't stop at data science. I'm also a writer, sharing my thoughts,
-                                insights, and experiences through blogs, posts, and opinions. I believe in the power of
-                                sharing knowledge.
-
-                                I invite you to explore my website, learn more about my work, and feel free to reach out
-                                if you have any suggestions or inquiries. Let's harness the power of data together!
-
-                            </p>
-                            <div class="d-flex justify-content-center fs-2 gap-4">
-                                <a class="text-gradient" href="https://medium.com/@zagnoune.otmane"
-                                    rel="noopener noreferrer"><i class="bi bi-medium"></i></i></a>
-                                <a class="text-gradient" href="https://www.linkedin.com/in/otmane-zagnoune-734579246/"
-                                    rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                                <a class="text-gradient" href="https://github.com/zagnouneotmane"
-                                    rel="noopener noreferrer"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-
-
-    <!-- Footer-->
-    <footer class="bg-white py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-center flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0">Copyright &copy; Zagnoune Otmane 2024</div>
-                </div>
-            </div>
+<section id="experience">
+  <div class="wrap">
+    <p class="label mono">Experience</p>
+    <h2>Where I've worked</h2>
+    <p class="intro">From medical imaging to production AI agents.</p>
+    <div class="timeline">
+      <article class="job">
+        <div class="when mono">Present</div>
+        <div>
+          <h3>AI/ML Engineer &amp; MLOps</h3>
+          <div class="org">Realift</div>
+          <p>Building agentic AI systems and the MLOps that runs them in production.</p>
         </div>
-          </footer>
+      </article>
+      <article class="job">
+        <div class="when mono">From Dec 2022</div>
+        <div>
+          <h3>Data Scientist</h3>
+          <div class="org">DataPathology · Remote</div>
+          <ul>
+            <li>Led a CNN for classifying H&amp;E-stained lung cancer (NSCLC) images, from experimental design to deployment.</li>
+            <li>Built models predicting clinical EGFR test results to support diagnosis and treatment planning.</li>
+            <li>Developed image preprocessing pipelines that remove artifacts and standardize inputs for ML models.</li>
+            <li>Worked with clinical experts to align models with real healthcare needs.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when mono">Sep – Dec 2022</div>
+        <div>
+          <h3>Data Scientist (Virtual Experience)</h3>
+          <div class="org">British Airways</div>
+          <ul>
+            <li>Predicted customer booking behavior with an MLOps pipeline: DVC data versioning, experiment tracking, CI/CD and CML monitoring.</li>
+            <li>Served the final model with FastAPI in Docker.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
+<section id="stack">
+  <div class="wrap">
+    <p class="label mono">Stack</p>
+    <h2>Tools I use</h2>
+    <p class="intro">Focus areas: LLM agents &amp; tool use · computer vision · speech (TTS / ASR) · MLOps.</p>
+    <div class="chips">
+      <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Hugging Face</span><span class="chip">ONNX Runtime</span><span class="chip">OpenCV</span><span class="chip">scikit-learn</span><span class="chip">LangChain</span><span class="chip">FFmpeg</span><span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">MLflow</span><span class="chip">DVC</span><span class="chip">Linux</span>
+    </div>
+  </div>
+</section>
 
+<section id="oss">
+  <div class="wrap">
+    <p class="label mono">Open source</p>
+    <h2>Giving back</h2>
+    <p class="intro">I contribute fixes, bug reports and answers to tools I use in production.</p>
+    <div class="oss">
+      <a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener"><b>Hermes Agent</b><span>Agent framework</span></a>
+      <a href="https://github.com/xinntao/Real-ESRGAN" target="_blank" rel="noopener"><b>Real-ESRGAN</b><span>Super-resolution</span></a>
+      <a href="https://github.com/danielgatis/rembg" target="_blank" rel="noopener"><b>rembg</b><span>Background removal</span></a>
+      <a href="https://github.com/SYSTRAN/faster-whisper" target="_blank" rel="noopener"><b>faster-whisper</b><span>Speech recognition</span></a>
+      <a href="https://github.com/OHF-Voice/piper1-gpl" target="_blank" rel="noopener"><b>Piper</b><span>Text-to-speech</span></a>
+    </div>
+  </div>
+</section>
 
+<section id="education">
+  <div class="wrap">
+    <p class="label mono">Education</p>
+    <h2>Background</h2>
+    <div class="two" style="margin-top:28px">
+      <div class="card edu">
+        <div class="item"><b>Master's, Mathematics &amp; Applications (Machine Learning)</b><span>FST Settat · 2020 – 2022</span></div>
+        <div class="item"><b>Bachelor's, Applied Mathematics</b><span>UCD-FSJ El Jadida · 2017 – 2020</span></div>
+      </div>
+      <div class="card">
+        <ul class="certs">
+          <li>IBM Data Science Specialization <time>Nov 2022</time></li>
+          <li>Getting Started with TensorFlow 2 <time>Nov 2022</time></li>
+          <li>Designing Data Lakes on AWS <time>Aug 2023</time></li>
+          <li>Linux Commands &amp; Shell Scripting <time>Aug 2023</time></li>
+          <li>Data Analysis with Python <time>Nov 2023</time></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
-
-
-
-
-    <!-- Notification bar (to hold recent articles news) -->
-   
-    <script>
-        // new window prevention
-        var newWnd = window.open();
-        newWnd.opener = null;
-    </script>
-
-    <!-- Bootstrap core JS-->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
-
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's build something.</h2>
+    <div class="cta" style="margin-top:0">
+      <a class="btn primary" href="mailto:zagnoune.otmane@gmail.com">zagnoune.otmane@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/otmane-zagnoune-734579246/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/ozmane1" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <small>© 2026 Otmane Zagnoune</small>
+  </div>
+</footer>
 
 </body>
-
 </html>
